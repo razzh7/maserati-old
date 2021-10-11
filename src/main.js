@@ -7,7 +7,9 @@ import "./assets/Common/reset.css";
 import "./assets/JS/setHtmlFontSize";
 import "./plugins/element";
 import "./assets/Fonts/iconfont.css";
-import "./assets/Common/common.scss"
+import "./assets/Common/common.scss";
+import animated from 'animate.css';
+Vue.use(animated);
 Vue.config.productionTip = false
 
 new Vue({

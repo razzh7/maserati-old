@@ -11,7 +11,12 @@
         </a>
       </el-col>
       <el-col :span="17" class="middle">
-        <el-col :span="2" class="standard" @mouseenter.native="hover" @mouseleave.native="hover">
+        <el-col
+          :span="2"
+          class="standard"
+          @mouseenter.native="hover"
+          @mouseleave.native="hoverLeave"
+        >
           <span class="text">品牌</span>
           <span class="iconfont icon-down-arrow"></span>
         </el-col>
@@ -46,7 +51,8 @@
       </el-col>
     </el-row>
     <!-- 隐藏菜单部分 -->
-      <el-row class="disable-mune" v-show="isShow">
+    <transition>
+      <el-row class="disable-mune" v-if="isShow">
         <el-col :span="24">
           <el-col :span="8" class="brand-story">
             <ul class="list">
@@ -111,25 +117,26 @@
           </el-col>
         </el-col>
       </el-row>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Navigator',
+  name: "Navigator",
   data() {
     return {
-      isShow: false
-    }
+      isShow: false,
+    };
   },
   methods: {
     hover() {
-      this.isShow = !this.isShow;
+      this.isShow = true;
     },
     hoverLeave() {
       this.isShow = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -139,7 +146,6 @@ export default {
   top: 0;
   left: 0;
   height: 0.9rem;
-  border: 1px solid $borderColor;
 }
 .el-col {
   height: 100%;
@@ -159,6 +165,7 @@ export default {
   height: 0.9rem;
   .standard {
     @include vh-center;
+    // pointer-events: none;
   }
   .text {
     font-size: 0.168rem;
@@ -201,8 +208,9 @@ export default {
   }
 }
 .disable-mune {
+  position: absolute;
+  z-index: -2; //解决闪烁问题
   height: 3rem;
-  border-bottom: 2px solid red;
   .brand-story {
     @include vh-center;
   }
@@ -221,4 +229,23 @@ export default {
   }
 }
 //动画部分
+.v-enter {
+  height: 0;
+  overflow: hidden;
+}
+.v-enter-to {
+  height: 3rem;
+}
+.v-enter-active {
+  transition: height .3s ease-in;
+}
+.v-leave {
+  height: 3rem;
+}
+.v-leave-active {
+  transition: height .3s ease-in;
+}
+.v-leave-to {
+  height: 0;
+}
 </style>
