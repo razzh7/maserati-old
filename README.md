@@ -1,29 +1,8 @@
-# vue-template
+# Maserati CN Office
 
-## Project setup
-```
-npm install
-```
+## 完成度
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
++ 首页导航栏✔
 
-### Compiles and minifies for production
-```
-npm run build
-```
+有时间就会继续做下去……
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
